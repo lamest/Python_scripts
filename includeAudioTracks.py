@@ -1,9 +1,10 @@
 from pathlib import Path
 
-mypath="D:\Downloads\[Beatrice-Raws] Overlord [BDRip 1920x1080 x264 FLAC]\\"
+currentPath=".\\"
+outputPath="C:\watch\\"
     
-videoFiles=list(Path(mypath).glob("*.[mM][kK][vV]"))
-audioFiles=list(Path(mypath).rglob("*.[mM][kK][aA]"))
+videoFiles=list(Path(currentPath).glob("*.[mM][kK][vV]"))
+audioFiles=list(Path(currentPath).rglob("*.[mM][kK][aA]"))
 
 from os.path import splitext, basename
 
@@ -33,5 +34,5 @@ for video in videos:
     command+="-map 0 "
     for i, audio in enumerate(video.AudioFiles):
         command+=f"-map {i+1}:a -metadata:s:a:{i+1} language=ru -metadata:s:a:{i+1} title=\"{audio.parts[-2]}\" " 
-    command+=f"-c copy \"{mypath}output_{basename(video.VideoFile)}\""
+    command+=f"-c copy \"{outputPath}output_{basename(video.VideoFile)}\""
     system(command)
