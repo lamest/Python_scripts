@@ -1,7 +1,7 @@
 from pathlib import Path
 
 currentPath=".\\"
-outputPath="C:\watch\\"
+outputPath="D:\watch\\"
     
 videoFiles=list(Path(currentPath).glob("*.[mM][kK][vV]"))
 audioFiles=list(Path(currentPath).rglob("*.[mM][kK][aA]"))
@@ -22,7 +22,7 @@ for i, videoFile in enumerate(videoFiles):
     videos.append(video)
     for j, audioFile in enumerate(audioFiles):
         audioFileName=splitext(basename(audioFile))[0]
-        if videoFileName==audioFileName:
+        if videoFileName in audioFileName:
             video.AudioFiles.append(audioFile)
 
 from os import system
